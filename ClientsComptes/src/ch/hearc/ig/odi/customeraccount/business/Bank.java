@@ -5,6 +5,11 @@
  */
 package ch.hearc.ig.odi.customeraccount.business;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  *
  * @author thierry.hubmann
@@ -12,25 +17,31 @@ package ch.hearc.ig.odi.customeraccount.business;
 public class Bank {
     int number;
     String name;
+    Map<Integer, Customer> customers;
+    Map<String, Account> accounts;
+    
 
     public Bank(int number, String name) {
         this.number = number;
         this.name = name;
+        
+        customers = new HashMap();
+        accounts = new HashMap();
     }
     
-    public Account getAccountByNumber(int number){
-        return null;
+    public Account getAccountByNumber(String number){
+        return accounts.get(number);
     }
     
     public Customer getCustomerByNumber(int number){
-        return null;
+        return customers.get(number);
     }
     
-    public void addCustomer(){
-        
+    public void addCustomer(int number, String firstName, String lastName){
+        customers.put(number, new Customer(number, firstName, lastName));
     }
     
-    public void addAccount(){
-        
+    public void addAccount(String number, String name, double rate, Customer customer){
+        accounts.put(number, new Account(number, name, rate, customer));
     }
 }
