@@ -6,40 +6,54 @@ import java.util.*;
 
 public class Customer {
 
-	private Collection<Account> accounts;
-	private int number;
-	private String firstName;
-	private String lastName;
+    private List<Account> accounts;
+    private int number;
+    private String firstName;
+    private String lastName;
 
-	/**
-	 * 
-	 * @param number
-	 * @param firstName
-	 * @param lastName
-	 */
-	public Customer(Integer number, String firstName, String lastName) {
-		// TODO - implement Customer.Customer
-		throw new UnsupportedOperationException();
-	}
+    /**
+     *
+     * @param number
+     * @param firstName
+     * @param lastName
+     */
+    public Customer(Integer number, String firstName, String lastName) {
+        this.number = number;
+        this.firstName = firstName;
+        this.lastName = lastName;
 
-	/**
-	 * 
-	 * @param number
-	 */
-	public Account getAccountByNumber(String number) {
-		// TODO - implement Customer.getAccountByNumber
-		throw new UnsupportedOperationException();
-	}
+        this.accounts = new ArrayList<>();
+    }
 
-	/**
-	 * 
-	 * @param number
-	 * @param name
-	 * @param rate
-	 */
-	public void addAccount(String number, String name, double rate) {
-		// TODO - implement Customer.addAccount
-		throw new UnsupportedOperationException();
-	}
+    /**
+     *
+     * @param number
+     */
+    public Account getAccountByNumber(String number) {
+        Account account = null;
+        boolean found = false;
+        int i = 0;
+        while (!found && i <= accounts.size()) {
+            if (accounts.get(i).getNumber().equals(number)) {
+                found = true;
+                account = accounts.get(i);
+            }
+        }
+        if (!found) {
+            throw new IllegalArgumentException("This account doesn't exist");
+        }
+        return account;
+    }
+
+    /**
+     *
+     * @param number
+     * @param name
+     * @param rate
+     */
+    public void addAccount(String number, String name, double rate) {
+        Account newAccount = new Account(number, name, rate, this);
+        accounts.add(newAccount);
+    }
 
 }

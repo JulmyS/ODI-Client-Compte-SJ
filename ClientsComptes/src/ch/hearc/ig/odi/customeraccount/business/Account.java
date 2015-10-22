@@ -15,8 +15,10 @@ public class Account {
 	 * @param customer
 	 */
 	public Account(String number, String name, double rate, Customer customer) {
-		// TODO - implement Account.Account
-		throw new UnsupportedOperationException();
+		this.number = number;
+                this.name = name;
+                this.rate = rate;
+                this.customer = customer;
 	}
 
 	/**
@@ -24,8 +26,7 @@ public class Account {
 	 * @param amount
 	 */
 	public void credit(double amount) {
-		// TODO - implement Account.credit
-		throw new UnsupportedOperationException();
+		this.balance = balance + amount;
 	}
 
 	/**
@@ -33,8 +34,7 @@ public class Account {
 	 * @param amount
 	 */
 	public void debit(double amount) {
-		// TODO - implement Account.debit
-		throw new UnsupportedOperationException();
+		this.balance = balance - amount;
 	}
 
 	/**
@@ -44,8 +44,40 @@ public class Account {
 	 * @param target
 	 */
 	public static void transfert(double amount, Account source, Account target) {
-		// TODO - implement Account.transfert
-		throw new UnsupportedOperationException();
+		source.debit(amount);
+                target.credit(amount);
 	}
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
+    public double getRate() {
+        return rate;
+    }
+
+    public void setRate(double rate) {
+        this.rate = rate;
+    }
 
 }
